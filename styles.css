@@ -708,6 +708,220 @@ body.light-theme .skills-band {
   line-height: 1.75;
 }
 
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-visual {
+  margin: -1.1rem -1.1rem 1.1rem;
+  padding: 1rem;
+  min-height: 180px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 28%),
+    linear-gradient(135deg, rgba(181, 106, 58, 0.2), rgba(255, 247, 239, 0.7));
+}
+
+body.light-theme .project-visual {
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent 28%),
+    linear-gradient(135deg, rgba(240, 165, 108, 0.18), rgba(26, 38, 45, 0.9));
+}
+
+.visual-window {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.visual-window span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.visual-layout {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.8rem;
+  height: 118px;
+}
+
+.visual-sidebar,
+.visual-stat,
+.visual-chart,
+.visual-cards div,
+.ops-line,
+.ops-grid div,
+.delivery-column div {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+body.light-theme .visual-sidebar,
+body.light-theme .visual-stat,
+body.light-theme .visual-chart,
+body.light-theme .visual-cards div,
+body.light-theme .ops-line,
+body.light-theme .ops-grid div,
+body.light-theme .delivery-column div {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.visual-sidebar {
+  height: 100%;
+}
+
+.visual-main {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.visual-stat-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.7rem;
+}
+
+.visual-stat {
+  min-height: 24px;
+}
+
+.visual-chart {
+  min-height: 46px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent),
+    linear-gradient(90deg, rgba(181, 106, 58, 0.95), rgba(232, 193, 162, 0.95));
+}
+
+body.light-theme .visual-chart {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent),
+    linear-gradient(90deg, rgba(240, 165, 108, 0.9), rgba(255, 200, 150, 0.4));
+}
+
+.visual-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.visual-cards div {
+  min-height: 26px;
+}
+
+.ops-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ops-line {
+  height: 16px;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+  margin-top: 0.15rem;
+}
+
+.ops-grid div {
+  min-height: 52px;
+}
+
+.delivery-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.delivery-column {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.delivery-column small {
+  color: var(--heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.delivery-column div {
+  min-height: 26px;
+}
+
+.project-points {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.project-points li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.project-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.project-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.project-metrics div {
+  padding: 0.9rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--line);
+}
+
+body.light-theme .project-metrics div {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-metrics strong {
+  display: block;
+  color: var(--heading);
+  margin-bottom: 0.35rem;
+}
+
+.project-metrics span {
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -868,6 +1082,10 @@ body.light-theme .skills-band {
   .cards-grid,
   .project-grid,
   .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-metrics {
     grid-template-columns: 1fr;
   }
 

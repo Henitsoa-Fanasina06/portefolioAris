@@ -14,14 +14,14 @@ if (year) {
 }
 
 const applyTheme = (theme) => {
-  const isLight = theme === "light";
-  document.body.classList.toggle("light-theme", isLight);
+  const isDarkSurface = theme === "light";
+  document.body.classList.toggle("light-theme", isDarkSurface);
 
   if (themeToggle) {
-    themeToggle.innerHTML = isLight
+    themeToggle.innerHTML = isDarkSurface
       ? '<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>'
-      : '<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8Z" fill="currentColor"/><path d="M17.5 5.5 18 7l1.5.5L18 8l-.5 1.5L17 8l-1.5-.5L17 7l.5-1.5Zm3 5L21 12l1.5.5L21 13l-.5 1.5L20 13l-1.5-.5L20 12l.5-1.5Z" fill="currentColor"/></svg></span>';
-    themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+      : '<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8Z" fill="currentColor"/></svg></span>';
+    themeToggle.setAttribute("aria-label", isDarkSurface ? "Activer le theme clair" : "Activer le theme sombre");
   }
 };
 
@@ -58,24 +58,27 @@ if (profileImage && photoPlaceholder) {
 }
 
 const revealElements = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.16 }
-);
 
-revealElements.forEach((element) => {
-  observer.observe(element);
-});
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
+}
 
 const updateScrollState = () => {
-  const scrolled = window.scrollY > 24;
+  const scrolled = window.scrollY > 20;
   siteHeader?.classList.toggle("scrolled", scrolled);
   scrollTopBtn?.classList.toggle("show", window.scrollY > 500);
 
